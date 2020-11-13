@@ -1,0 +1,29 @@
+{
+  "name": "collab-painting",
+  "version": "1.0.0",
+  "description": "collaborative painting using a websocket and vanilla js",
+  "main": "backend/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FelHa/collab-painting.git"
+  },
+  "keywords": [
+    "javascript",
+    "websocket"
+  ],
+  "author": "Felix Haußer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FelHa/collab-painting/issues"
+  },
+  "homepage": "https://github.com/FelHa/collab-painting#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^3.0.1"
+  }
+}
