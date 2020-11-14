@@ -57,7 +57,7 @@ export default class Controller {
 
   prepareSession = () => {
     /* Initialisiere UI */
-    this.views.paint.init(this.modell.state);
+    this.views.paint.init(this.modell.state.canvas.personal);
 
     /* Sockets Paint*/
     this.socket

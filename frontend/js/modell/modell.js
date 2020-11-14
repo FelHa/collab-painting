@@ -1,12 +1,20 @@
 export default class Modell {
   state = {
     canvas: {
-      isDrawing: false,
-      pos: { x: 0, y: 0 },
-      pickedColor: '#000000',
-      pickedBrush: 20,
-      min: 10,
-      max: 50,
+      session: {
+        isDrawing: false,
+        pos: { x: 0, y: 0 },
+        pickedColor: '#000000',
+        pickedBrush: 20,
+      },
+      personal: {
+        isDrawing: false,
+        pos: { x: 0, y: 0 },
+        pickedColor: '#000000',
+        pickedBrush: 20,
+        min: 10,
+        max: 50,
+      },
     },
     client: { id: '', name: '' },
   };
@@ -22,14 +30,14 @@ export default class Modell {
     return this;
   };
 
-  setPickedColor = (color) => {
-    this.state.canvas.pickedColor = color;
+  setPickedColor = (color, which) => {
+    this.state.canvas[which].pickedColor = color;
     if (this.events.colorChange) this.events.colorChange();
     return this;
   };
 
-  setPickedBrush = (brush) => {
-    this.state.canvas.pickedBrush = brush;
+  setPickedBrush = (brush, which) => {
+    this.state.canvas[which].pickedBrush = brush;
     if (this.events.brushChange) this.events.brushChange();
     return this;
   };

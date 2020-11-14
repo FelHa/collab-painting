@@ -4,11 +4,11 @@ import { getRelativePosition, getAbsolutePosition } from '../../utils/math.js';
 
 function onBrushClick(event) {
   if (event.target.tagName === 'DIV') {
-    this.modell.setPickedColor(event.target.style.backgroundColor);
+    this.modell.setPickedColor(event.target.style.backgroundColor, 'personal');
     this.socket.emit('colorChanged', event.target.style.backgroundColor);
   }
   if (event.target.tagName === 'INPUT') {
-    this.modell.setPickedBrush(event.target.value);
+    this.modell.setPickedBrush(event.target.value, 'personal');
     this.socket.emit('brushChanged', event.target.value);
   }
 }
@@ -21,9 +21,9 @@ function onCanvasMousedown({ offsetX, offsetY }) {
 
   const [relX, relY] = getRelativePosition(offsetX, offsetY, canvas);
 
-  state.canvas.pos.x = relX;
-  state.canvas.pos.y = relY;
-  state.canvas.isDrawing = true;
+  state.canvas.personal.pos.x = relX;
+  state.canvas.personal.pos.y = relY;
+  state.canvas.personal.isDrawing = true;
   this.socket.emit('mouseOnCanvas', {
     x: relX,
     y: relY,
@@ -37,15 +37,15 @@ function onCanvasMousemove({ offsetX, offsetY }) {
 
   const [relX, relY] = getRelativePosition(offsetX, offsetY, canvas);
   const [absX, absY] = getAbsolutePosition(
-    state.canvas.pos.x,
-    state.canvas.pos.y,
+    state.canvas.personal.pos.x,
+    state.canvas.personal.pos.y,
     canvas
   );
 
-  if (state.canvas.isDrawing === true) {
+  if (state.canvas.personal.isDrawing === true) {
     canvas.ctx.draw(absX, absY, offsetX, offsetY);
-    state.canvas.pos.x = relX;
-    state.canvas.pos.y = relY;
+    state.canvas.personal.pos.x = relX;
+    state.canvas.personal.pos.y = relY;
     this.socket.emit('mouseOnCanvas', {
       x: relX,
       y: relY,
@@ -60,16 +60,16 @@ function onCanvasMouseup({ offsetX, offsetY }) {
 
   const [relX, relY] = getRelativePosition(offsetX, offsetY, canvas);
   const [absX, absY] = getAbsolutePosition(
-    state.canvas.pos.x,
-    state.canvas.pos.y,
+    state.canvas.personal.pos.x,
+    state.canvas.personal.pos.y,
     canvas
   );
 
-  if (state.canvas.isDrawing === true) {
+  if (state.canvas.personal.isDrawing === true) {
     canvas.ctx.draw(absX, absY, offsetX, offsetY);
-    state.canvas.pos.x = 0;
-    state.canvas.pos.y = 0;
-    state.canvas.isDrawing = false;
+    state.canvas.personal.pos.x = 0;
+    state.canvas.personal.pos.y = 0;
+    state.canvas.personal.isDrawing = false;
     this.socket.emit('mouseOnCanvas', {
       x: relX,
       y: relY,
@@ -84,8 +84,8 @@ function onCanvasMouseleave({ offsetX, offsetY }) {
 
   const [relX, relY] = getRelativePosition(offsetX, offsetY, canvas);
 
-  if (state.canvas.isDrawing === true) {
-    state.canvas.isDrawing = false;
+  if (state.canvas.personal.isDrawing === true) {
+    state.canvas.personal.isDrawing = false;
     this.socket.emit('mouseOnCanvas', {
       x: relX,
       y: relY,

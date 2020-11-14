@@ -87,7 +87,7 @@ export default class PaintView {
     };
   };
 
-  init = ({ canvas: canvasState }) => {
+  init = (canvasState) => {
     this.addHeader();
 
     this.addMain();

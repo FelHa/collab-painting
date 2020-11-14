@@ -1,16 +1,16 @@
 function onColorChange() {
   this.views.paint.canvas.setContext({
-    width: this.modell.state.canvas.pickedBrush,
-    color: this.modell.state.canvas.pickedColor,
+    width: this.modell.state.canvas.personal.pickedBrush,
+    color: this.modell.state.canvas.personal.pickedColor,
   });
 }
 
 function onBrushChange() {
   this.views.paint.canvas.setContext({
-    width: this.modell.state.canvas.pickedBrush,
-    color: this.modell.state.canvas.pickedColor,
+    width: this.modell.state.canvas.personal.pickedBrush,
+    color: this.modell.state.canvas.personal.pickedColor,
   });
-  this.views.paint.brush.slider.value = this.modell.state.canvas.pickedBrush;
+  this.views.paint.brush.slider.value = this.modell.state.canvas.personal.pickedBrush;
 }
 
 export default (controller) => {
