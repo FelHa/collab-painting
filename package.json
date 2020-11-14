@@ -8,6 +8,9 @@
     "start": "node backend/server.js",
     "dev": "nodemon backend/server.js"
   },
+  "engines": {
+    "node": "14.15.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/FelHa/collab-painting.git"
