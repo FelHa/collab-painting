@@ -9,4 +9,4 @@ _collab-painting_ ist eine kleine auf dem MVC- und Observer-Pattern basierende A
 
 ## Deployed:
 
-: https://collab-painting.herokuapp.com/
+https://collab-painting.herokuapp.com/
